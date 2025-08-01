@@ -18,67 +18,65 @@ This project aims to design and simulate a GFMI with **droop control** and **PI-
 - To develop a droop-based outer control loop for generating voltage and frequency references.  
 - To validate that the generated \( V_{cdqref} \) aligns with the capacitor voltage \( V_{cdq} \), confirming correct operation of the overall control strategy.
 
-## 📐 Control Equations Summary
+## Control Equations Summary
 
-### 🔹 1. dq-Frame System Model
+###  1. dq-Frame System Model
 
-\[
+$$
 L \frac{di_d}{dt} = v_d - v_{cd} - r i_d + L \omega i_q
-\]
-\[
+$$
+$$
 L \frac{di_q}{dt} = v_q - v_{cq} - r i_q - L \omega i_d
-\]
-\[
+$$
+$$
 C \frac{dv_{cd}}{dt} = i_d - i_{Ld} + C \omega v_{cq} - \frac{v_{cd}}{R_c}
-\]
-\[
+$$
+$$
 C \frac{dv_{cq}}{dt} = i_q - i_{Lq} - C \omega v_{cd} - \frac{v_{cq}}{R_c}
-\]
+$$
 
 ---
 
-### 🔹 2. Inner PI Controller Relationships
+### 2. Inner PI Controller Relationships
 
 These expressions describe the dynamic behavior that the PI controllers aim to achieve:
 
-\[
+$$
 i_{dq} = i_{dq}^* + i_{Ldq} - C \omega J V_{cdq}
-\]
-\[
+$$
+$$
 v_{dq} = v_{dq}^* + V_{cdq} - L \omega J i_{dq}
-\]
+$$
 
-Where:
-
-- \( J = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} \) accounts for the rotating reference frame  
-- \( i_{Ldq} \) is the load current in the dq-frame  
-- \( V_{cdq} \) is the capacitor voltage vector
+Where:  
+$J = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ accounts for the rotating reference frame  
+$i_{Ldq}$ is the load current in the dq-frame  
+$V_{cdq}$ is the capacitor voltage vector
 
 ---
 
-### 🔹 3. Droop Control Equations
+### 3. Droop Control Equations
 
 Filtered power expressions using first-order filters:
 
-\[
+$$
 P_{filtered} = \frac{\omega_c}{s + \omega_c} P_m \quad , \quad Q_{filtered} = \frac{\omega_c}{s + \omega_c} Q_m
-\]
+$$
 
 Droop equations for frequency and voltage:
 
-\[
+$$
 \omega_{ref} = \omega_{rated} - m(P_{filtered} - P_{nom})
-\]
-\[
+$$
+$$
 V_{ref} = V_{rated} - n(Q_{filtered} - Q_{nom})
-\]
+$$
 
 Final control references:
 
-\[
+$$
 \theta = \int \omega_{ref} \, dt \quad , \quad V_{cdqref} = V_{ref} \cdot \sqrt{3}
-\]
-
+$$
 
 This framework lays the foundation for future work in DC microgrid EMS, especially in integrating distributed energy resources (DERs), optimizing voltage sharing, and enabling plug-and-play operation of power converters.
 
