@@ -105,7 +105,7 @@ The simulation of the grid-forming inverter system was implemented in MATLAB/Sim
 8. **Voltage application**:  
    The three-phase voltages \( v_{abc} \) are applied to the inverter terminals, closing the control loop and driving the inverter operation.
 
- ## 📊 Results and Discussion
+ ##  Results and Discussion
 
 | **Figure** | **Description** |
 |-----------|-----------------|
