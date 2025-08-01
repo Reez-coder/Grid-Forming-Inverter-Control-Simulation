@@ -49,7 +49,7 @@ v_{dq} = v_{dq}^* + V_{cdq} - L \omega J i_{dq}
 $$
 
 Where:  
-$J = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ accounts for the rotating reference frame  
+$J$ accounts for the rotating reference frame  
 $i_{Ldq}$ is the load current in the dq-frame  
 $V_{cdq}$ is the capacitor voltage vector
 
