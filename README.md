@@ -109,13 +109,13 @@ The simulation of the grid-forming inverter system was implemented in MATLAB/Sim
 
 | **Figure** | **Description** |
 |-----------|-----------------|
-| ![](Figures/VCDQINITIAL.png)<br><br>**Fig 1**: Capacitor voltages \( V_{cd} \) and \( V_{cq} \) in dq-frame | Demonstrates stable voltage regulation. \( V_{cd} \approx 20\,V \) and \( V_{cq} \approx 0\,V \), validating the dq-frame model accuracy. |
+| ![](VCDQINITIAL.png)<br><br>**Fig 1**: Capacitor voltages \( V_{cd} \) and \( V_{cq} \) in dq-frame | Demonstrates stable voltage regulation. \( V_{cd} \approx 20\,V \) and \( V_{cq} \approx 0\,V \), validating the dq-frame model accuracy. |
 | ![](Figures/IDIQINITIAL.png)<br><br>**Fig 2**: Inductor currents \( i_d \) and \( i_q \) in dq-frame | Steady-state current behavior confirms the correct implementation of current dynamics in the dq-frame. Minor ripples are within acceptable bounds. |
 | ![](Figures/VCDREFANDVCD.png)<br><br>**Fig 3**: Tracking of \( V_{cd} \) with step reference \( V_{cdref} \) | Inner PI controller response to step input from 50 V to 110 V. Excellent tracking with minimal overshoot and fast settling. |
 | ![](Figures/VCQREFANDVCQ.png)<br><br>**Fig 4**: Tracking of \( V_{cq} \) vs reference \( V_{cqref} = 0 \) | Voltage along the q-axis remains tightly regulated near zero throughout, showing effective decoupling. |
 | ![](Figures/VCDREFANDVCDdroop.png)<br><br>**Fig 5**: \( V_{cd} \) tracking the droop-generated \( V_{cdref} \) | Validates integration of droop control with PI-based voltage regulation. Output accurately follows the droop-computed reference. |
 | ![](Figures/VCQREFdroopANDVCQdroop.png)<br><br>**Fig 6**: \( V_{cq} \) under droop control | The quadrature voltage remains near zero even under the droop-generated reference, confirming axis decoupling and proper droop-PI cascade performance. |
 
-
+![](Figures/VCDQ_INITIAL.png)
 
 
