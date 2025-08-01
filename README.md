@@ -81,7 +81,34 @@ $$
 \theta = \int \omega_{ref} \, dt \quad , \quad V_{cdqref} = V_{ref} \cdot \sqrt{3}
 $$
 
-This framework lays the foundation for future work in DC microgrid EMS, especially in integrating distributed energy resources (DERs), optimizing voltage sharing, and enabling plug-and-play operation of power converters.
+## 3. Simulation Procedure
 
-## 📂 Repository Structure
+The simulation of the grid-forming inverter system was implemented in MATLAB/Simulink using Simscape. The control architecture consists of an outer droop controller and an inner PI-based current controller, both operating in the synchronous \( dq \)-frame. The simulation steps are outlined below:
+
+1. **System setup**:  
+   A three-phase inverter is connected to the grid through an LCL filter and a resistive load. The system is modeled in the synchronous reference frame using Simscape components.
+
+2. **Power calculation**:  
+   The inverter output active power \( P \) and reactive power \( Q \) are computed using the inverter-side capacitor voltages \( V_{cdq} \) and inductor currents \( I_{ldq} \).
+
+3. **Droop control**:  
+   The measured power values are passed into the droop equations to calculate frequency and voltage deviations. The frequency reference is integrated to obtain the phase angle \( \theta \), used for the rotating frame transformation.
+
+4. **Voltage reference generation**:  
+   The droop-generated voltage magnitude \( V_{ref} \) is scaled by \( \sqrt{3} \) to produce the voltage references \( V_{cdref} \) and \( V_{cqref} \), which serve as inputs to the voltage control loop.
+
+5. **Outer voltage PI control**:  
+   The voltage references are compared with the measured capacitor voltages \( V_{cd} \) and \( V_{cq} \). The error signals are processed through PI controllers to generate the current references \( i_{dref} \) and \( i_{qref} \).
+
+6. **Inner current PI control**:  
+   The current references are compared with the actual measured inverter currents \( i_d \) and \( i_q \), and the resulting errors are fed into PI controllers to compute the control voltages \( v_{dref} \) and \( v_{qref} \).
+
+7. **Decoupling and transformation**:  
+   Feed-forward decoupling terms are added to minimize coupling between the d- and q-axes. The resulting control voltages are transformed back into the \( abc \)-frame using the calculated phase angle \( \theta \).
+
+8. **Voltage application**:  
+   The three-phase voltages \( v_{abc} \) are applied to the inverter terminals, closing the control loop and driving the inverter operation.
+
+
+
 
