@@ -1,6 +1,9 @@
 # Grid-Forming Inverter Control Simulation  
 **Developed during Internship at LEMTA Laboratory**
 
+[![MATLAB](https://img.shields.io/badge/MATLAB-R2024b-orange)](https://www.mathworks.com/products/matlab.html)
+
+
 This repository presents a simulation of a three-phase grid-forming inverter (GFM) using a cascaded droop and PI control strategy. The project was completed during a research internship at **LEMTA (Laboratoire d’Énergétique et de Mécanique Théorique et Appliquée)** and demonstrates key competencies in **DC grid dynamics, distributed control, and Simulink-based algorithm development**; directly relevant to energy management systems (EMS) for modern power grids.
 
 ## Introduction
