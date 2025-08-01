@@ -38,8 +38,6 @@ $$
 C \frac{dv_{cq}}{dt} = i_q - i_{Lq} - C \omega v_{cd} - \frac{v_{cq}}{R_c}
 $$
 
----
-
 ### 2. Inner PI Controller Relationships
 
 These expressions describe the dynamic behavior that the PI controllers aim to achieve:
@@ -55,8 +53,6 @@ Where:
 $J$ accounts for the rotating reference frame  
 $i_{Ldq}$ is the load current in the dq-frame  
 $V_{cdq}$ is the capacitor voltage vector
-
----
 
 ### 3. Droop Control Equations
 
