@@ -117,5 +117,14 @@ The simulation of the grid-forming inverter system was implemented in MATLAB/Sim
 | ![](VCQREFdroopANDVCQdroop.png)<br><br>**Fig 6**: $$\( V_{cq} \)$$ under droop control | The quadrature voltage remains near zero even under the droop-generated reference, confirming axis decoupling and proper droop-PI cascade performance. |
 
 
+## Conclusion
+ This work successfully designed and implemented PI and droop control strategies for a three
+phase grid-forming inverter, demonstrated using Simulink and Simscape. The control strategy
+ effectively enabled decoupled regulation of voltage and current in the synchronous 𝑑𝑞 frame.
+ Simulation results confirm accurate voltage regulation, effective axis decoupling, and stable
+ power-sharing performance, validating the robustness of the proposed control architecture under
+ dynamic conditions.
+
+
 
 
