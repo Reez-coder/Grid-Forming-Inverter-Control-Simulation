@@ -85,13 +85,13 @@ The simulation of the grid-forming inverter system was implemented in MATLAB/Sim
    A three-phase inverter is connected to the grid through an LCL filter and a resistive load. The system is modeled in the synchronous reference frame using Simscape components.
 
 2. **Power calculation**:  
-   The inverter output active power $$\( P \)$$ and reactive power $$\( Q \)$$ are computed using the inverter-side capacitor voltages$$ \( V_{cdq} \)$$ and inductor currents $$\( I_{ldq} \).$$
+   The inverter output active power $$\( P \)$$ and reactive power $$\( Q \)$$ are computed using the inverter-side capacitor voltages $$\( V_{cdq}\)$$ and inductor currents $$\( I_{ldq} \)$$.
 
 3. **Droop control**:  
-   The measured power values are passed into the droop equations to calculate frequency and voltage deviations. The frequency reference is integrated to obtain the phase angle \( \theta \), used for the rotating frame transformation.
+   The measured power values are passed into the droop equations to calculate frequency and voltage deviations. The frequency reference is integrated to obtain the phase angle \(\theta \), used for the rotating frame transformation.
 
 4. **Voltage reference generation**:  
-   The droop-generated voltage magnitude $$ \( V_{ref} \ ) $$ is scaled by $$\( \sqrt{3} \) $$ to produce the voltage references  $$\( V_{cdref} \) $$ and  $$\( V_{cqref} \)$$, which serve as inputs to the voltage control loop.
+   The droop-generated voltage magnitude $$ \( V_{ref} \ ) $$ is scaled by $$\( \sqrt{3} \) $$ to produce the voltage references  $$\( V_{cdref} \)$$ and  $$\( V_{cqref} \)$$, which serve as inputs to the voltage control loop.
 
 5. **Outer voltage PI control**:  
    The voltage references are compared with the measured capacitor voltages $$ \( V_{cd} \)$$ and $$\( V_{cq} \)$$. The error signals are processed through PI controllers to generate the current references $$\( i_{dref} \)$$ and $$\( i_{qref} \).$$
