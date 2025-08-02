@@ -135,8 +135,6 @@ phase grid-forming inverter, demonstrated using Simulink and Simscape. The contr
 - Prof. Serge Pierfederici  
 - Prof. Milad Bahrami  
 
----
-
 ## License
 
 This project is academic in nature and was developed as part of a research internship at the **LEMTA Lab**, within the **Master's in Decentralized Smart Energy Systems** program at *Université de Lorraine – Master ENERGIE*.
