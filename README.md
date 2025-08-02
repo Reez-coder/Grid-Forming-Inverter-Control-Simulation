@@ -125,6 +125,24 @@ phase grid-forming inverter, demonstrated using Simulink and Simscape. The contr
  power-sharing performance, validating the robustness of the proposed control architecture under
  dynamic conditions.
 
+## Credits
+
+**Team**  
+- **Author**: Rashida Olomowewe  
+- **Contributor**: Morris Nyantee  
+
+**Advisors**  
+- Prof. Serge Pierfederici  
+- Prof. Milad Bahrami  
+
+---
+
+## License
+
+This project is academic in nature and was developed as part of a research internship at the **LEMTA Lab**, within the **Master's in Decentralized Smart Energy Systems** program at *Université de Lorraine – Master ENERGIE*.
+
+**⚠ Please contact the authors prior to any commercial use or distribution.**
+
 
 
 
