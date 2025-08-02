@@ -88,7 +88,7 @@ The simulation of the grid-forming inverter system was implemented in MATLAB/Sim
    The inverter output active power $$\( P \)$$ and reactive power $$\( Q \)$$ are computed using the inverter-side capacitor voltages $$\( V_{cdq}\)$$ and inductor currents $$\( I_{ldq}\)$$.
 
 3. **Droop control**:  
-   The measured power values are passed into the droop equations to calculate frequency and voltage deviations. The frequency reference is integrated to obtain the phase angle \(\theta \), used for the rotating frame transformation.
+   The measured power values are passed into the droop equations to calculate frequency and voltage deviations. The frequency reference is integrated to obtain the phase angle $\(\theta \)$, used for the rotating frame transformation.
 
 4. **Voltage reference generation**:  
    The droop-generated voltage magnitude $$\( V_{ref}\)$$ is scaled by $$\(\sqrt{3}\)$$ to produce the voltage references  $$\(V_{cdref}\)$$ and  $$\(V_{cqref}\)$$, which serve as inputs to the voltage control loop.
@@ -97,10 +97,10 @@ The simulation of the grid-forming inverter system was implemented in MATLAB/Sim
    The voltage references are compared with the measured capacitor voltages $$\( V_{cd} \)$$ and $$\(V_{cq} \)$$. The error signals are processed through PI controllers to generate the current references $$\(i_{dref}\)$$ and $$\(i_{qref} \)$$.
 
 6. **Inner current PI control**:  
-   The current references are compared with the actual measured inverter currents $$\(i_d\)$$ and $$\(i_q\)$$, and the resulting errors are fed into PI controllers to compute the control voltages $$\( v_{dref}\)$$ and $$ (v_{qref}\)$$.
+   The current references are compared with the actual measured inverter currents $$\(i_d\)$$ and $$\(i_q\)$$, and the resulting errors are fed into PI controllers to compute the control voltages $$\( v_{dref}\)$$ and $$(v_{qref}\)$$.
 
 7. **Decoupling and transformation**:  
-   Feed-forward decoupling terms are added to minimize coupling between the d- and q-axes. The resulting control voltages are transformed back into the $\( abc\)$-frame using the calculated phase angle $\( theta\)$.
+   Feed-forward decoupling terms are added to minimize coupling between the d- and q-axes. The resulting control voltages are transformed back into the $\( abc\)$-frame using the calculated phase angle $\(\theta \)$.
 
 8. **Voltage application**:  
    The three-phase voltages $$\(v_{abc}\)$$ are applied to the inverter terminals, closing the control loop and driving the inverter operation.
@@ -109,11 +109,11 @@ The simulation of the grid-forming inverter system was implemented in MATLAB/Sim
 
 | **Figure** | **Description** |
 |-----------|-----------------|
-| ![](VCDQINITIAL.png)<br><br>**Fig 1**: Capacitor voltages $$\( V_{cd} \)$$ and  $$\( V_{cq} \) $$in dq-frame | Demonstrates stable voltage regulation. $$\( V_{cd} \approx 20\,V \)$$ and $$\( V_{cq} \approx 0\,V \)$$, validating the dq-frame model accuracy. |
+| ![](VCDQINITIAL.png)<br><br>**Fig 1**: Capacitor voltages $$\( V_{cd} \)$$ and  $$\( V_{cq} \)$$ in dq-frame | Demonstrates stable voltage regulation. $$\( V_{cd} \approx 20\,V \)$$ and $$\( V_{cq} \approx 0\,V \)$$, validating the dq-frame model accuracy. |
 | ![](IDIQINITIAL.png)<br><br>**Fig 2**: Inductor currents $$\( i_d \)$$ and $$\( i_q \)$$ in dq-frame | Steady-state current behavior confirms the correct implementation of current dynamics in the dq-frame. Minor ripples are within acceptable bounds. |
 | ![](VCDREFANDVCD.png)<br><br>**Fig 3**: Tracking of $$\( V_{cd} \)$$ with step reference $$\( V_{cdref}\)$$ | Inner PI controller response to step input from 50 V to 110 V. Excellent tracking with minimal overshoot and fast settling. |
-| ![](VCQREFANDVCQ.png)<br><br>**Fig 4**: Tracking of $$\( V_{cq} \)$$ vs reference R$$\( V_{cqref} = 0 \)$$ | Voltage along the q-axis remains tightly regulated near zero throughout, showing effective decoupling. |
-| ![](VCDREFANDVCDdroop.png)<br><br>**Fig 5**: $$\( V_{cd} \)$$ tracking the droop-generated \( V_{cdref} \) | Validates integration of droop control with PI-based voltage regulation. Output accurately follows the droop-computed reference. |
+| ![](VCQREFANDVCQ.png)<br><br>**Fig 4**: Tracking of $$\( V_{cq} \)$$ vs reference $$\( V_{cqref} = 0 \)$$ | Voltage along the q-axis remains tightly regulated near zero throughout, showing effective decoupling. |
+| ![](VCDREFANDVCDdroop.png)<br><br>**Fig 5**: $$\( V_{cd} \)$$ tracking the droop-generated $$\( V_{cdref} \)$$ | Validates integration of droop control with PI-based voltage regulation. Output accurately follows the droop-computed reference. |
 | ![](VCQREFdroopANDVCQdroop.png)<br><br>**Fig 6**: $$\( V_{cq} \)$$ under droop control | The quadrature voltage remains near zero even under the droop-generated reference, confirming axis decoupling and proper droop-PI cascade performance. |
 
 
