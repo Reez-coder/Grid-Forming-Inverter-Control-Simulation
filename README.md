@@ -16,10 +16,10 @@ This project aims to design and simulate a GFMI with **droop control** and **PI-
 
 ## Objectives
 
-- To design and implement the inner PI-based current controller in the \( dq \)-frame, and test its performance under step inputs and steady-state conditions.  
+- To design and implement the inner PI-based current controller in the $\( dq \)$-frame, and test its performance under step inputs and steady-state conditions.  
 - To model a three-phase inverter system with an LCL filter in MATLAB/Simulink and integrate it with the inner controller.  
 - To develop a droop-based outer control loop for generating voltage and frequency references.  
-- To validate that the generated \( V_{cdqref} \) aligns with the capacitor voltage \( V_{cdq} \), confirming correct operation of the overall control strategy.
+- To validate that the generated $\(V_{cdqref}\)$ aligns with the capacitor voltage $\(V_{cdq}\)$, confirming correct operation of the overall control strategy.
 
 ## Control Equations Summary
 
@@ -79,42 +79,42 @@ $$
 
 ## 3. Simulation Procedure
 
-The simulation of the grid-forming inverter system was implemented in MATLAB/Simulink using Simscape. The control architecture consists of an outer droop controller and an inner PI-based current controller, both operating in the synchronous \( dq \)-frame. The simulation steps are outlined below:
+The simulation of the grid-forming inverter system was implemented in MATLAB/Simulink using Simscape. The control architecture consists of an outer droop controller and an inner PI-based current controller, both operating in the synchronous $\( dq \)$-frame. The simulation steps are outlined below:
 
 1. **System setup**:  
    A three-phase inverter is connected to the grid through an LCL filter and a resistive load. The system is modeled in the synchronous reference frame using Simscape components.
 
 2. **Power calculation**:  
-   The inverter output active power $$\( P \)$$ and reactive power $$\( Q \)$$ are computed using the inverter-side capacitor voltages $$\( V_{cdq}\)$$ and inductor currents $$\( I_{ldq} \)$$.
+   The inverter output active power $$\( P \)$$ and reactive power $$\( Q \)$$ are computed using the inverter-side capacitor voltages $$\( V_{cdq}\)$$ and inductor currents $$\( I_{ldq}\)$$.
 
 3. **Droop control**:  
    The measured power values are passed into the droop equations to calculate frequency and voltage deviations. The frequency reference is integrated to obtain the phase angle \(\theta \), used for the rotating frame transformation.
 
 4. **Voltage reference generation**:  
-   The droop-generated voltage magnitude $$ \( V_{ref} \ ) $$ is scaled by $$\( \sqrt{3} \) $$ to produce the voltage references  $$\( V_{cdref} \)$$ and  $$\( V_{cqref} \)$$, which serve as inputs to the voltage control loop.
+   The droop-generated voltage magnitude $$\( V_{ref}\)$$ is scaled by $$\(\sqrt{3}\)$$ to produce the voltage references  $$\(V_{cdref}\)$$ and  $$\(V_{cqref}\)$$, which serve as inputs to the voltage control loop.
 
 5. **Outer voltage PI control**:  
-   The voltage references are compared with the measured capacitor voltages $$ \( V_{cd} \)$$ and $$\( V_{cq} \)$$. The error signals are processed through PI controllers to generate the current references $$\( i_{dref} \)$$ and $$\( i_{qref} \).$$
+   The voltage references are compared with the measured capacitor voltages $$\( V_{cd} \)$$ and $$\(V_{cq} \)$$. The error signals are processed through PI controllers to generate the current references $$\(i_{dref}\)$$ and $$\(i_{qref} \)$$.
 
 6. **Inner current PI control**:  
-   The current references are compared with the actual measured inverter currents $$\( i_d \)$$ and $$\( i_q \)$$, and the resulting errors are fed into PI controllers to compute the control voltages $$\( v_{dref} \) $$ and $$ \( v_{qref} \) $$.
+   The current references are compared with the actual measured inverter currents $$\(i_d\)$$ and $$\(i_q\)$$, and the resulting errors are fed into PI controllers to compute the control voltages $$\( v_{dref}\)$$ and $$ (v_{qref}\)$$.
 
 7. **Decoupling and transformation**:  
-   Feed-forward decoupling terms are added to minimize coupling between the d- and q-axes. The resulting control voltages are transformed back into the \( abc \)-frame using the calculated phase angle \( \theta \).
+   Feed-forward decoupling terms are added to minimize coupling between the d- and q-axes. The resulting control voltages are transformed back into the $\( abc\)$-frame using the calculated phase angle $\( theta\)$.
 
 8. **Voltage application**:  
-   The three-phase voltages $$\( v_{abc} \)$$ are applied to the inverter terminals, closing the control loop and driving the inverter operation.
+   The three-phase voltages $$\(v_{abc}\)$$ are applied to the inverter terminals, closing the control loop and driving the inverter operation.
 
  ##  Results and Discussion
 
 | **Figure** | **Description** |
 |-----------|-----------------|
-| ![](VCDQINITIAL.png)<br><br>**Fig 1**: Capacitor voltages $$\( V_{cd} \)$$ and  $$\( V_{cq} \) $$in dq-frame | Demonstrates stable voltage regulation. $$ \( V_{cd} \approx 20\,V \) $$ and $$\( V_{cq} \approx 0\,V \)$$, validating the dq-frame model accuracy. |
-| ![](IDIQINITIAL.png)<br><br>**Fig 2**: Inductor currents \( i_d \) and \( i_q \) in dq-frame | Steady-state current behavior confirms the correct implementation of current dynamics in the dq-frame. Minor ripples are within acceptable bounds. |
-| ![](VCDREFANDVCD.png)<br><br>**Fig 3**: Tracking of \( V_{cd} \) with step reference \( V_{cdref} \) | Inner PI controller response to step input from 50 V to 110 V. Excellent tracking with minimal overshoot and fast settling. |
-| ![](VCQREFANDVCQ.png)<br><br>**Fig 4**: Tracking of \( V_{cq} \) vs reference \( V_{cqref} = 0 \) | Voltage along the q-axis remains tightly regulated near zero throughout, showing effective decoupling. |
-| ![](VCDREFANDVCDdroop.png)<br><br>**Fig 5**: \( V_{cd} \) tracking the droop-generated \( V_{cdref} \) | Validates integration of droop control with PI-based voltage regulation. Output accurately follows the droop-computed reference. |
-| ![](VCQREFdroopANDVCQdroop.png)<br><br>**Fig 6**: \( V_{cq} \) under droop control | The quadrature voltage remains near zero even under the droop-generated reference, confirming axis decoupling and proper droop-PI cascade performance. |
+| ![](VCDQINITIAL.png)<br><br>**Fig 1**: Capacitor voltages $$\( V_{cd} \)$$ and  $$\( V_{cq} \) $$in dq-frame | Demonstrates stable voltage regulation. $$\( V_{cd} \approx 20\,V \)$$ and $$\( V_{cq} \approx 0\,V \)$$, validating the dq-frame model accuracy. |
+| ![](IDIQINITIAL.png)<br><br>**Fig 2**: Inductor currents $$\( i_d \)$$ and $$\( i_q \)$$ in dq-frame | Steady-state current behavior confirms the correct implementation of current dynamics in the dq-frame. Minor ripples are within acceptable bounds. |
+| ![](VCDREFANDVCD.png)<br><br>**Fig 3**: Tracking of $$\( V_{cd} \)$$ with step reference $$\( V_{cdref}\)$$ | Inner PI controller response to step input from 50 V to 110 V. Excellent tracking with minimal overshoot and fast settling. |
+| ![](VCQREFANDVCQ.png)<br><br>**Fig 4**: Tracking of $$\( V_{cq} \)$$ vs reference R$$\( V_{cqref} = 0 \)$$ | Voltage along the q-axis remains tightly regulated near zero throughout, showing effective decoupling. |
+| ![](VCDREFANDVCDdroop.png)<br><br>**Fig 5**: $$\( V_{cd} \)$$ tracking the droop-generated \( V_{cdref} \) | Validates integration of droop control with PI-based voltage regulation. Output accurately follows the droop-computed reference. |
+| ![](VCQREFdroopANDVCQdroop.png)<br><br>**Fig 6**: $$\( V_{cq} \)$$ under droop control | The quadrature voltage remains near zero even under the droop-generated reference, confirming axis decoupling and proper droop-PI cascade performance. |
 
 
 
